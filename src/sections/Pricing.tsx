@@ -68,25 +68,22 @@ export const Pricing = () => {
         </div>
         <div className="flex flex-col gap-6 items-center mt-10 lg:flex-row lg:items-end lg:justify-center">
           {pricingTiers.map(
-            ({
-              title,
-              monthlyPrice,
-              buttonText,
-              popular,
-              inverse,
-              features,
-            }) => (
+            (
+              { title, monthlyPrice, buttonText, popular, inverse, features },
+              index,
+            ) => (
               <div
+                key={index}
                 className={twMerge(
                   "card",
-                  inverse === true && "border-black bg-black text-white"
+                  inverse === true && "border-black bg-black text-white",
                 )}
               >
                 <div className="flex justify-between">
                   <h3
                     className={twMerge(
                       "text-lg font-bold text-black/50",
-                      inverse === true && "text-white/60"
+                      inverse === true && "text-white/60",
                     )}
                   >
                     {title}
@@ -121,21 +118,21 @@ export const Pricing = () => {
                 <button
                   className={twMerge(
                     "btn btn-primary w-full mt-[30px]",
-                    inverse === true && "bg-white text-black"
+                    inverse === true && "bg-white text-black",
                   )}
                 >
                   {buttonText}
                 </button>
                 <ul className="flex flex-col gap-5 mt-8">
-                  {features.map((feature) => (
-                    <li className="text-sm flex items-center gap-4">
+                  {features.map((feature, index) => (
+                    <li key={index} className="text-sm flex items-center gap-4">
                       <CheckIcon className="h-6 w-6" />
                       <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-            )
+            ),
           )}
         </div>
       </div>
